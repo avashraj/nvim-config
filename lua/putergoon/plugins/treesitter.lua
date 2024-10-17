@@ -10,7 +10,8 @@ return {
     local treesitter = require("nvim-treesitter.configs")
 
     -- configure treesitter
-    treesitter.setup({ -- enable syntax highlighting
+    treesitter.setup({
+      -- enable syntax highlighting
       highlight = {
         enable = true,
       },
@@ -35,6 +36,9 @@ return {
         "cpp",
         "sql",
       },
+      -- set languages to ignore during installation
+      ignore_install = {}, -- or set specific languages to ignore like { "javascript" }
+
       incremental_selection = {
         enable = true,
         keymaps = {
@@ -44,6 +48,8 @@ return {
           node_decremental = "<bs>",
         },
       },
+      auto_install = true,
+      sync_install = false, -- `sync_install = true` should only be used if you want to block Neovim until parsers are installed
     })
   end,
 }
