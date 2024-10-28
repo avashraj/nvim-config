@@ -71,26 +71,43 @@ return {
     local capabilities = cmp_nvim_lsp.default_capabilities()
 
     -- Setup language servers
-    mason_lspconfig.setup_handlers({
-      function(server_name)
-        lspconfig[server_name].setup({
-          capabilities = capabilities,
-        })
-      end,
-      ["lua_ls"] = function()
-        -- configure lua server (with special settings)
-        lspconfig["lua_ls"].setup({
-          capabilities = capabilities,
-          settings = {
-            Lua = {
-              -- make the language server recognize "vim" global
-              diagnostics = {
-                globals = { "vim" },
-              },
-             },
-          },
-        })
-      end,
+    
+mason_lspconfig.setup_handlers({
+  function(server_name)
+    lspconfig[server_name].setup({
+      capabilities = capabilities,
     })
+  end,
+  ["lua_ls"] = function()
+    -- configure lua server (with special settings)
+    lspconfig["lua_ls"].setup({
+      capabilities = capabilities,
+      settings = {
+        Lua = {
+          -- make the language server recognize "vim" global
+          diagnostics = {
+            globals = { "vim" },
+          },
+        },
+      },
+    })
+  end,
+  ["pyright"] = function()
+    -- configure pyright (with special settings)
+    lspconfig["pyright"].setup({
+      capabilities = capabilities,
+      settings = {
+        python = {
+          analysis = {
+            typeCheckingMode = "off", -- adjust this as per your preference (off, basic, strict)
+            autoSearchPaths = true,
+            useLibraryCodeForTypes = true,
+          },
+        },
+      },
+    })
+  end,
+})
+
   end,
 }
