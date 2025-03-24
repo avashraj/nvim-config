@@ -35,6 +35,7 @@ return {
         "c",
         "cpp",
         "sql",
+        "java",
       },
       -- set languages to ignore during installation
       ignore_install = {}, -- or set specific languages to ignore like { "javascript" }

@@ -30,6 +30,7 @@ return {
         "pyright",
         "clangd",
         "sqlls",
+        "angularls",
       },
     })
   end,
